@@ -14,18 +14,13 @@ class SluggableListener
      */
     public function __construct(EventManager $evm)
     {
-        if (class_exists('\Doctrine\ORM\Events'))
-        {
+        if (class_exists('\Doctrine\ORM\Events')) {
             $evm->addEventListener(\Doctrine\ORM\Events::prePersist, $this);
             $evm->addEventListener(\Doctrine\ORM\Events::preUpdate, $this);
-        }
-        else
-        {
+        } else {
             $evm->addEventListener(\Doctrine\ODM\MongoDB\ODMEvents::prePersist, $this);
             $evm->addEventListener(\Doctrine\ODM\MongoDB\ODMEvents::preUpdate, $this);
         }
-
-
     }
 
     /**

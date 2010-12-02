@@ -8,7 +8,7 @@ class SlugNormalizer
 	 * @var string Divider
 	 */
 	private $_divider = '-';
-	
+
 	/**
 	 * @var string Original text
 	 */
