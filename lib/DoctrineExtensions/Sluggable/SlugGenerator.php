@@ -71,9 +71,9 @@ class SlugGenerator
 	 * @return int
 	 */
 	private function getSlugCandidateCount($slugCandidate, $entity) {
-		return count($this->_m->find(get_class($entity), array(
-			$entity->getSlugFieldName() => new \MongoRegex('/^' . preg_quote($slugCandidate, '/') . '/i'),
-		)));
+        return $this->_m->createQueryBuilder(get_class($entity))
+            ->field($entity->getSlugFieldName())->equals(new \MongoRegex('/^' . preg_quote($slugCandidate, '/') . '/i'))
+            ->getQuery()->count();
 	}
 
 	/**
